@@ -1,0 +1,77 @@
+<div class="content">
+    <div class="container-fluid">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" (click)="mostrarNuevo = !mostrarNuevo">+ Nueva ave</button>
+        <app-ave *ngIf="mostrarNuevo" [operacion]="'Nueva'"></app-ave>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+
+                    <div class="bootstrap-table">
+                        <div class="fixed-table-toolbar">
+                            <div class="pull-left search" class="text-right">
+                                <input class="form-control" type="text" [(ngModel)]="inputBusqueda" placeholder="Escribe tu busqueda aqui">
+                                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" (click)="getPorNombre()">Buscar Por Nombre</button>
+                                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" (click)="getPorZona()">Buscar Por Zona</button>
+                                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" (click)="get()">Todos</button>
+                            </div>
+                        </div>
+                        <div class="fixed-table-container" style="padding-bottom: 0px;">
+                            <div class="fixed-table-header" style="display: none;">
+                                <table></table>
+                            </div>
+                            <div class="fixed-table-body">
+                                <div class="fixed-table-loading" style="top: 41px;">Loading, please wait...</div>
+                                <table id="bootstrap-table" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="" data-field="id">
+                                                <div class="th-inner ">ID</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="" data-field="name">
+                                                <div class="th-inner sortable both">Nombre común</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="" data-field="name">
+                                                <div class="th-inner sortable both">Nombre Científico</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="" data-field="name">
+                                                <div class="th-inner">Acciones</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-index="0" *ngFor="let ave of aves; let i=index">
+                                            <td class="text-center" style="">{{ave.CDAVE}}</td>
+                                            <td style="">{{ave.DSNOMBRE_COMUN}}</td>
+                                            <td style="">{{ave.DSNOMBRE_CIENTIFICO}}</td>
+                                            <td class="td-actions text-right" style="">
+                                                <a rel="tooltip" title="Ver" class="btn btn-simple btn-info btn-icon table-action view" href="javascript:void(0)" data-original-title="View">O<i class="fa fa-image"></i></a>
+                                                <a rel="tooltip" (click)="editarAve[i]=!editarAve[i]" title="Editar" class="btn btn-simple btn-warning btn-icon table-action edit" href="javascript:void(0)" data-original-title="Edit">!<i class="fa fa-edit"></i></a>
+                                                <button rel="tooltip" title="Eliminar" (click)="eliminarAve(ave.CDAVE)" class="btn btn-simple btn-danger btn-icon table-action remove" data-original-title="Remove">x<i class="fa fa-remove"></i></button></td>
+                                            <app-ave *ngIf="editarAve[i]" [operacion]="'Editar'" [id]="ave.CDAVE"></app-ave>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="fixed-table-footer" style="display: none;">
+                                <table>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <!--  end card  -->
+            </div>
+            <!-- end col-md-12 -->
+        </div>
+        <!-- end row -->
+
+    </div>
+</div>

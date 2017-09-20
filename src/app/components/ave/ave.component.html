@@ -1,0 +1,61 @@
+
+<div class="content">
+    <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">{{operacion}} ave</h4>
+          </div>
+          <div class="content">
+            <form>
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label>ID</label>
+                    <input type="text" class="form-control" disabled placeholder="" [(ngModel)]="id" [ngModelOptions]="{standalone: true}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Nombre común</label>
+                    <input type="text" class="form-control" placeholder="Nombre comun">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Nombre científico</label>
+                    <input type="text" class="form-control" placeholder="Nombre cientifico">
+                  </div>
+                </div>
+              </div>
+
+              <label>Paises</label>
+              <div class="row">
+                <div class="col-lg-6" *ngFor="let pais of paises; let i=index">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <input type="checkbox" aria-label="Checkbox for following text input">
+                    </span>
+                    <input type="text" class="form-control" disabled aria-label="Text input with checkbox" [(ngModel)]="pais.DSNOMBRE" [ngModelOptions]="{standalone: true}">
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-info btn-fill pull-right">Guardar</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
